@@ -1,0 +1,24 @@
+{
+    "simulation_name": "Momo Credit Scoring Research Project Simulation",
+    "age_limits": {
+        "min": 18,
+        "max": 50
+    },
+    "dti_thresholds": {
+        "good": 0.35,
+        "danger": 0.5
+    },
+    "score_weights": {
+        "dpd_history": 35,
+        "dti_ratio": 25,
+        "repayment_score": 20,
+        "income_level": 10,
+        "wallet_activity": 10
+    },
+    "decision_thresholds": {
+        "approve_min_score": 80,
+        "manual_review_min_score": 60,
+        "max_ai_p_risk_for_approve": 0.1,
+        "min_ai_p_risk_for_reject": 0.25
+    }
+}

@@ -1,0 +1,6 @@
+# Match the joblib training environment. Use Python 3.12 on Streamlit Cloud.
+streamlit==1.50.0
+pandas>=2.2.3,<3.0
+numpy>=1.26.4,<2.0
+scikit-learn==1.6.1
+joblib>=1.4.2,<2.0
