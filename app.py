@@ -126,6 +126,8 @@ def inject_sidebar():
 def render_intro():
     st.markdown(hero(
         "Chấm điểm tín dụng, trực quan và minh bạch.",
+        "Hệ thống mô phỏng đánh giá rủi ro tín dụng, kết hợp AI "
+        "với bộ quy tắc nghiệp vụ R01–R10.",
     ), unsafe_allow_html=True)
 
 
@@ -320,6 +322,7 @@ def audit_rules(result):
 def render_new_scoring():
     st.markdown(page_heading(
         "Chấm điểm tín dụng trực tiếp",
+        "Nhập thông tin để thử nghiệm mô hình AI và bộ quy tắc R01–R10.",
         "AI THỰC THI · MÔ PHỎNG NGHIỆP VỤ",
     ),unsafe_allow_html=True)
     st.markdown(workflow_steps(),unsafe_allow_html=True)
