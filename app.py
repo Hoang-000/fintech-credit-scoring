@@ -126,7 +126,6 @@ def inject_sidebar():
 def render_intro():
     st.markdown(hero(
         "Chấm điểm tín dụng, trực quan và minh bạch.",
-        "Trung tâm demo AI và Big Data: từ dữ liệu nghiên cứu Home Credit đến bộ quy tắc xét duyệt khoản vay giả lập theo bối cảnh ví điện tử.",
     ), unsafe_allow_html=True)
 
 
@@ -195,14 +194,14 @@ def render_dashboard():
     ])
     st.dataframe(check, hide_index=True, use_container_width=True)
     st.markdown(disclaimer(
-        "Lưu ý nghiên cứu: các xác suất AI trong 2.000 hồ sơ là giá trị được lấy mẫu từ dự đoán trên tập kiểm thử Home Credit; KHÔNG phải dự đoán riêng cho từng người dùng ví MoMo. Kết quả được giữ nguyên như dữ liệu nhóm cung cấp."
+        "Lưu ý nghiên cứu: các xác suất AI trong 2.000 hồ sơ là giá trị được lấy mẫu từ dự đoán trên tập kiểm thử; KHÔNG phải dự đoán riêng cho từng người dùng. Kết quả được giữ nguyên như dữ liệu gốc."
     ),unsafe_allow_html=True)
 
     with st.expander("Kiến trúc 6 tầng theo mục 2.2.1 của báo cáo"):
         st.markdown('''| Tầng | Thành phần trong nghiên cứu và demo |
 |---|---|
 | 1. Giao diện | Streamlit: Dashboard, tra cứu và nhập hồ sơ mới |
-| 2. Nguồn dữ liệu | 5 bảng Home Credit (Colab) và 2.000 hồ sơ giả lập |
+| 2. Nguồn dữ liệu | 5 bảng và 2.000 hồ sơ giả lập |
 | 3. ETL / Big Data | Làm sạch, ghép dữ liệu theo SK_ID_CURR trong Colab (offline) |
 | 4. Tiền xử lý | SimpleImputer, StandardScaler, OneHotEncoder trong pipeline |
 | 5. AI & quy tắc | Logistic Regression, R01–R10, điểm S_final |
@@ -243,7 +242,7 @@ def render_customer_lookup():
     row=filtered.loc[filtered["momo_customer_id"]==cust_id].iloc[0]
 
     st.markdown(disclaimer(
-        "Các bản ghi trong phân hệ này là hồ sơ giả lập. P_risk được gán bằng cách lấy mẫu từ phân bố dự đoán của Home Credit; không phải dự đoán cá nhân cho hồ sơ đang tra cứu."
+        "Các bản ghi trong phân hệ này là hồ sơ giả lập. P_risk được gán bằng cách lấy mẫu từ phân bố dự đoán; không phải dự đoán cá nhân cho hồ sơ đang tra cứu."
     ),unsafe_allow_html=True)
     l,r=st.columns([1.1,1],gap="medium")
     with l:
@@ -321,7 +320,6 @@ def audit_rules(result):
 def render_new_scoring():
     st.markdown(page_heading(
         "Chấm điểm tín dụng trực tiếp",
-        "Nhập hồ sơ, gọi mô hình AI đã huấn luyện và kết hợp quy tắc R01–R10.",
         "AI THỰC THI · MÔ PHỎNG NGHIỆP VỤ",
     ),unsafe_allow_html=True)
     st.markdown(workflow_steps(),unsafe_allow_html=True)
@@ -337,7 +335,7 @@ def render_new_scoring():
         st.stop()
 
     st.markdown(disclaimer(
-        "Đây là mô hình nghiên cứu: phần điều kiện tín dụng dùng VNĐ giả lập; phần AI dùng đơn vị gốc của Home Credit. Hai nhóm giá trị tiền được nhập riêng, không tự động đổi đơn vị. Kết quả chỉ hỗ trợ minh họa ra quyết định, không có giá trị phê duyệt khoản vay thực tế."
+        "Đây là mô hình nghiên cứu: phần điều kiện tín dụng dùng VNĐ giả lập; phần AI dùng đơn vị gốc của dữ liệu. Hai nhóm giá trị tiền được nhập riêng, không tự động đổi đơn vị. Kết quả chỉ hỗ trợ minh họa ra quyết định, không có giá trị phê duyệt khoản vay thực tế."
     ),unsafe_allow_html=True)
 
     initialize_form(medians)
@@ -369,7 +367,7 @@ def render_new_scoring():
             wallet_txn=st.slider("Số giao dịch ví mỗi tháng",0,120,key="f_wallet_txn")
 
         st.divider()
-        st.markdown("### B. Dữ liệu đầu vào AI (đơn vị Home Credit)")
+        st.markdown("### B. Dữ liệu đầu vào AI")
         st.caption("Giá trị mặc định của AMT_* lấy từ trung vị tập huấn luyện đã lưu trong pipeline; không phải quy đổi từ VNĐ.")
         a,b,c=st.columns(3)
         with a:
